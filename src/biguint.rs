@@ -279,9 +279,9 @@ fn from_radix_digits_be(v: &[u8], radix: u32) -> BigUint {
     debug_assert!(!v.is_empty() && !radix.is_power_of_two());
     debug_assert!(v.iter().all(|&c| u32::from(c) < radix));
 
-    #[cfg(feature = "std")]
+/*    #[cfg(feature = "std")]
     let radix_log2 = f64::from(radix).log2();
-    #[cfg(not(feature = "std"))]
+    #[cfg(not(feature = "std"))] */
     let radix_log2 = ilog2(radix.next_power_of_two()) as f64;
 
     // Estimate how big the result will be, so we can pre-allocate it.
@@ -2233,9 +2233,9 @@ fn to_inexact_bitwise_digits_le(u: &BigUint, bits: u8) -> Vec<u8> {
 fn to_radix_digits_le(u: &BigUint, radix: u32) -> Vec<u8> {
     debug_assert!(!u.is_zero() && !radix.is_power_of_two());
 
-    #[cfg(feature = "std")]
+/*    #[cfg(feature = "std")]
     let radix_log2 = f64::from(radix).log2();
-    #[cfg(not(feature = "std"))]
+    #[cfg(not(feature = "std"))] */
     let radix_log2 = ilog2(radix) as f64;
 
     // Estimate how big the result will be, so we can pre-allocate it.
